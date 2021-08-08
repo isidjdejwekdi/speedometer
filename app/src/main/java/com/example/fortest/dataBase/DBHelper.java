@@ -5,7 +5,6 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.example.fortest.DisplayParameters;
@@ -23,6 +22,7 @@ public class DBHelper extends SQLiteOpenHelper {
     public static final String AUTOHUDNAME = "autoHud";
     public static final String ANALOGNAME = "analog";
     public static final String MLNAME = "ml";
+    public static final String THEMECOLORNAME = "theme";
 
 
     public DBHelper(@Nullable Context context) {
@@ -49,6 +49,11 @@ public class DBHelper extends SQLiteOpenHelper {
         newValues.clear();
         newValues.put(NAME, MLNAME);
         newValues.put(VALUE, DisplayParameters.displayMiles ? 1: 0);
+        db.insert(TABLE_NAME, null, newValues);
+
+        newValues.clear();
+        newValues.put(NAME, THEMECOLORNAME);
+        newValues.put(VALUE, 1);
         db.insert(TABLE_NAME, null, newValues);
 
     }

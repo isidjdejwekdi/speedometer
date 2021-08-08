@@ -60,6 +60,44 @@
 
             />
 
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                >
+                <TextView
+                    android:id="@+id/themeColorText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="30sp"
+                    android:text="@string/themeColor"
+                    android:textColor="@color/white"
+                    />
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/orangeTheme"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_below="@+id/themeColorText"
+                    android:layout_alignParentStart="true"
+                    android:background="@color/orange"/>
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/redTheme"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_below="@+id/themeColorText"
+                    android:layout_alignParentEnd="true"
+                    android:background="@color/red"/>
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/whiteTheme"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_below="@+id/themeColorText"
+                    android:layout_centerHorizontal="true"
+                    android:background="@color/white"/>
+
+            </RelativeLayout>
+
             <Button
                 android:id="@+id/hud"
                 android:layout_width="match_parent"

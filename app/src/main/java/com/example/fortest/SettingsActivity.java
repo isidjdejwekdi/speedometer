@@ -9,6 +9,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.example.fortest.drawing.Themes;
+
 import java.util.Objects;
 
 public class SettingsActivity extends AppCompatActivity {
@@ -59,6 +61,15 @@ public class SettingsActivity extends AppCompatActivity {
         SwitchCompat sDistChange = findViewById(R.id.mlSwitch);
         sDistChange.setChecked(DisplayParameters.displayMiles);
         sDistChange.setOnCheckedChangeListener((buttonView, isChecked) -> DisplayParameters.displayMiles = isChecked);
+
+        Button orangeButton = findViewById(R.id.orangeTheme);
+        orangeButton.setOnClickListener(v -> Themes.mainThemeColor = Themes.elementsColorOrange);
+
+        Button whiteButton = findViewById(R.id.whiteTheme);
+        whiteButton.setOnClickListener(v -> Themes.mainThemeColor = Themes.elementsColorWhite);
+
+        Button redButton = findViewById(R.id.redTheme);
+        redButton.setOnClickListener(v -> Themes.mainThemeColor = Themes.elementsColorRed);
 
         bHud = findViewById(R.id.hud);
         if (DisplayParameters.autoHud)

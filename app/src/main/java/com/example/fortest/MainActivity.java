@@ -32,6 +32,7 @@ import com.example.fortest.GPS.LocListener;
 import com.example.fortest.GPS.LocListenerInterface;
 import com.example.fortest.GPS.LocationData;
 import com.example.fortest.dataBase.DBHelper;
+import com.example.fortest.drawing.Themes;
 import com.example.fortest.drawing.view.DistView;
 import com.example.fortest.drawing.view.MiniView;
 import com.example.fortest.drawing.view.SpeedView;
@@ -97,6 +98,20 @@ public class MainActivity extends AppCompatActivity implements LocListenerInterf
             if (cursor.moveToNext())
                 DisplayParameters.displayMiles = (cursor.getInt(valueInd) == 1);
 
+            if (cursor.moveToNext()) {
+                switch (cursor.getInt(valueInd)) {
+                    case 1:
+                        Themes.mainThemeColor = Themes.elementsColorOrange;
+                        break;
+                    case 2:
+                        Themes.mainThemeColor = Themes.elementsColorWhite;
+                        break;
+                    case 3:
+                        Themes.mainThemeColor = Themes.elementsColorRed;
+                        break;
+                }
+            }
+
         }
         cursor.close();
 
@@ -116,6 +131,7 @@ public class MainActivity extends AppCompatActivity implements LocListenerInterf
                 result -> {
                     if(result.getResultCode() == Activity.RESULT_CANCELED){
                         ContentValues newValue = new ContentValues();
+
                         newValue.put(DBHelper.VALUE, DisplayParameters.autoHud ? 1: 0);
                         String where = DBHelper.KEY_ID + "=1";
                         database.update(DBHelper.TABLE_NAME, newValue, where, null);
@@ -129,6 +145,24 @@ public class MainActivity extends AppCompatActivity implements LocListenerInterf
                         newValue.put(DBHelper.VALUE, DisplayParameters.displayMiles? 1: 0);
                         where = DBHelper.KEY_ID + "=3";
                         database.update(DBHelper.TABLE_NAME, newValue, where, null);
+
+                        if (Themes.mainThemeColor.equals(Themes.elementsColorOrange)){
+                            newValue.clear();
+                            newValue.put(DBHelper.VALUE, 1);
+                            where = DBHelper.KEY_ID + "=4";
+                            database.update(DBHelper.TABLE_NAME, newValue, where, null);
+                        } else if (Themes.mainThemeColor.equals(Themes.elementsColorWhite)){
+                            newValue.clear();
+                            newValue.put(DBHelper.VALUE, 2);
+                            where = DBHelper.KEY_ID + "=4";
+                            database.update(DBHelper.TABLE_NAME, newValue, where, null);
+                        } else if (Themes.mainThemeColor.equals(Themes.elementsColorRed)){
+                            newValue.clear();
+                            newValue.put(DBHelper.VALUE, 3);
+                            where = DBHelper.KEY_ID + "=4";
+                            database.update(DBHelper.TABLE_NAME, newValue, where, null);
+                        }
+
 
                         refreshViews();
 
@@ -227,7 +261,7 @@ public class MainActivity extends AppCompatActivity implements LocListenerInterf
             distanceForTime += lastLocation.distanceTo(location);
         }
 
-        if (millis >= 60000 * 10f) {
+        if (millis >= 60000 * .5f) {
             LocationData.avrSpeed = distanceForTime / (int) (millis / 1000); // met/h
             startTime = System.currentTimeMillis();
             distanceForTime = 0;

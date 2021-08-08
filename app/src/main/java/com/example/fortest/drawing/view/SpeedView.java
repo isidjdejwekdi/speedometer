@@ -59,7 +59,7 @@ public class SpeedView extends View {
         if (DisplayParameters.displayHud)
             reflection = -1f;
 
-        paint.setColor(Color.parseColor(Themes.elementsColorOrange));
+        paint.setColor(Color.parseColor(Themes.mainThemeColor));
         paint.setStyle(Paint.Style.STROKE);
         paint.setStrokeWidth(0.01f);
 
@@ -130,7 +130,7 @@ public class SpeedView extends View {
             canvas.translate(1f * reflection, -1f);
             canvas.scale(0.075f, -0.07f);
 
-            paint.setColor(Color.parseColor(Themes.elementsColorOrange));
+            paint.setColor(Color.parseColor(Themes.mainThemeColor));
             paint.setTextSize(2f);
             canvas.drawText(text, -3f, -1.5f, paint);
             canvas.restore();

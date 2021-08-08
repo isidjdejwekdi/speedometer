@@ -63,7 +63,7 @@ public class MiniView extends View {
         canvas.scale(0.5f * width * reflection, -1f * height);
         canvas.translate(1f * reflection, -1f);
 
-        paint.setColor(Color.parseColor(Themes.elementsColorOrange));
+        paint.setColor(Color.parseColor(Themes.mainThemeColor));
         paint.setStyle(Paint.Style.STROKE);
         paint.setStrokeWidth(0.01f);
 
