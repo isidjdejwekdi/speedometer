@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Speedometer</string>
+    <string name="hud">HUD режим</string>
+    <string name = "analog">отображать аналоговый спидометр</string>
+    <string name = "ml">отображать в милях</string>
+    <string name = "autoHud">HUD автоматически</string>
+
+
+</resources>
