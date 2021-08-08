@@ -261,7 +261,7 @@ public class MainActivity extends AppCompatActivity implements LocListenerInterf
             distanceForTime += lastLocation.distanceTo(location);
         }
 
-        if (millis >= 60000 * .5f) {
+        if (millis >= 60000 * 10f) {
             LocationData.avrSpeed = distanceForTime / (int) (millis / 1000); // met/h
             startTime = System.currentTimeMillis();
             distanceForTime = 0;
